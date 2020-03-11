@@ -65,11 +65,46 @@ for date in dates:
     else:
         days_since = (int(day) + 9)
     num_days = num_days.append(pd.Series(days_since), ignore_index=True)
-        
+
+df.insert(2, "Days_Elapsed", num_days)
+
+# Dataframe with unnecessary features removed
+df_model = df.copy()
+df_model.drop(["SNo", "ObservationDate", "Encoded_Region", "Region", \
+               "Country/Region", "Last Update"], inplace=True, axis=1)
+
+"""--- Test/Train Split ---"""
+from sklearn.model_selection import train_test_split
+# Splits data into train/validation data and labels, and test data
+X_train_val, X_test, y_train_val, y_test = train_test_split(df_model, df_model["Deaths"], test_size = 0.2, random_state = 0)
+
+# Splits taining and validation data
+X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size = .125, random_state = 0)
+# X_test - 70% of data, X_val - 10% of data, X_test - 20% of data
+
+
+"""--- Model ---"""
+from sklearn import metrics
+from sklearn.ensemble import GradientBoostingRegressor
+# Parameters to tune
+params = {'n_estimators': 500, 'max_depth': 4, 'min_samples_split': 2,
+          'learning_rate': 0.01, 'loss': 'ls'}
+
+classifier = GradientBoostingRegressor(**params)
+classifier.fit(X_train, y_train)
+
+# Predicting the validation set results
+y_pred_val = classifier.predict(X_val)
+
+mse = metrics.mean_squared_error(y_val, y_pred_val)
+print("MSE: %.4f" % mse)
 
 
 
-"""
+""" 
+***UNCESSESARY SHIT WE PROBABLY DONT NEED***
+
+
 df = confirmed_tseries.copy()
 df = df.rename(columns={"Province/State" : "Region"})
 
@@ -122,39 +157,11 @@ df.drop("Country/Region", inplace=True, axis=1)
 # Remove region text data for model
 df_model = df.drop("Region", axis=1)
 """
-
-"""--- Test/Train Split ---"""
-from sklearn.model_selection import train_test_split
-# Splits data into train/validation data and labels, and test data
-X_train_val, X_test, y_train_val, y_test = train_test_split(df_model, df_model["dead-2/20/20"], test_size = 0.2, random_state = 0)
-
-# Splits taining and validation data
-X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size = .125, random_state = 0)
-
-# X_test - 70% of data, X_val - 10% of data, X_test - 20% of data
-
-"""--- Model ---"""
-from xgboost import XGBClassifier
-model = XGBClassifier()
-model.fit(X_train, y_train)
     
-# Predicting the validation set results
-y_pred_val = model.predict(X_val)
-    
-# Making the Confusion Matrix
-cm = metrics.confusion_matrix(y_val, y_pred_val)
-print("Correct negatives: " + str(cm[0,0]) + " False positives: " + str(cm[0,1]))
-print("False negatives: " + str(cm[1,0]) + " Correct positives: " + str(cm[1,1]))
-    
-# Compute accuracy based on confusion matrix
-accuracy = (cm[0,0] + cm[1,1]) / (cm[0,1] + cm[1,0] + cm[0,0] + cm[1,1])
-print("Accuracy: " + str(accuracy))
 
-# Applying k-Fold Cross Validation
-from sklearn.model_selection import cross_val_score
-accuracies = cross_val_score(estimator = model, X = X_train, y = y_train, cv = 10)
-print("Cross Val Mean - " + str(accuracies.mean()))
-print("Cross Val Std Dev - " + str(accuracies.std()))
+
+
+
 
 
 
