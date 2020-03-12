@@ -102,10 +102,10 @@ print("Mean square error: %.4f" % mse)
 
 
 """--- Hypertuning ---"""
+# Tests different numbers of estimator values
 estimators = [500, 750, 1000, 1250, 1500, 1750, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 10000]
 est_mse = []
 
-# Tests different numbers of estimator values
 for n_estimators in estimators:
     params = {'n_estimators': n_estimators, 'max_depth': 4, 'min_samples_split': 2,
           'learning_rate': 0.01, 'loss': 'ls'}
@@ -120,10 +120,12 @@ plt.plot(estimators, est_mse)
 plt.show()
 
 
+
+
+# Tests different learning rate values
 learning_rates = [0.0001, 0.001, 0.01, 0.1, 0.2, 0.3]
 lr_mse = []
 
-# Tests different learning rate values
 for lr in learning_rates:
     params = {'n_estimators': 1000, 'max_depth': 4, 'min_samples_split': 2,
           'learning_rate': lr, 'loss': 'ls'}
@@ -134,7 +136,7 @@ for lr in learning_rates:
     mse = metrics.mean_squared_error(y_val, classifier.predict(X_val))
     lr_mse.append(mse)
 
-plt.plot(estimators, lr_mse)
+plt.plot(learning_rates, lr_mse)
 plt.show()
     
 
