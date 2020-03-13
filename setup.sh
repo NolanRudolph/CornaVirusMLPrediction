@@ -32,18 +32,18 @@ fi
 if [ -z $(which pip3) ]
 then
 	echo "Installing pip3...";
-	sudo apt-get install -y python3-pip > /dev/null;
+	sudo -H apt-get install -y python3-pip > /dev/null;
 fi
 
 # Install pandas if not already installed
-if [ -z $(pip3 list | grep pandas) ]
+if [ -z $(pip3 list | grep "pandas") ]
 then
 	echo "Installing Panda...";
 	pip3 install pandas > /dev/null;
 fi
 
 # Install matplotlib if not already installed
-if [ -z $(pip3 list | grep matplotlib) ]
+if [ -z $(pip3 list | grep "matplotlib") ]
 then
 	echo "Installing Matplotlib...";
 	pip3 install matplotlib > /dev/null;
