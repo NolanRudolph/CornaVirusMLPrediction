@@ -11,7 +11,7 @@ if [[ $userInput =~ [Nn] ]]
 then
 	echo "Exiting...";
 	exit 1;
-elif ![[ $userInput =~ [Yy] ]]
+elif ! [[ $userInput =~ [Yy] ]]
 then
 	echo "Please respond with y or n. Exiting...";
 	exit 1;
