@@ -36,17 +36,17 @@ then
 fi
 
 # Install pandas if not already installed
-if [ -z $(pip list | grep pandas) ]
+if [ -z $(pip3 list | grep pandas) ]
 then
 	echo "Installing Panda...";
-	sudo pip3 install pandas > /dev/null;
+	pip3 install pandas > /dev/null;
 fi
 
 # Install matplotlib if not already installed
-if [ -z $(pip list | grep matplotlib) ]
+if [ -z $(pip3 list | grep matplotlib) ]
 then
 	echo "Installing Matplotlib...";
-	sudo pip3 install matplotlib > /dev/null;
+	pip3 install matplotlib > /dev/null;
 fi
 
 echo "Finished Setup!"
