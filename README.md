@@ -3,6 +3,7 @@
 	A Macro-Metric Machine Learning Prediction for CoronaVirus Propagation
 	</br>
 </h1>
+  
 
 ## Requirements
 1. Python3
