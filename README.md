@@ -1,9 +1,3 @@
-<style>
-	.entry-title:before {
-		opacity:0;
-	}
-</style>
-
 <h1 align="center">
 	<br>
 	A Macro-Metric Machine Learning Prediction for CoronaVirus Propagation
