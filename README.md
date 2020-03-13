@@ -19,7 +19,7 @@
 2. $ cd CoronaVirusMLPrediction
 3. $ bash setup.sh
   
-
+## Files & Directories
 **corona\_virus.py**  
 Our main script with finely tuned hyperparameters that optimize the accuracy of all future CoronaVirus regional predictions.
 
