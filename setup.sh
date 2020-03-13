@@ -19,7 +19,7 @@ fi
 
 # Update system to not ruin user's computer
 echo "Updating...";
-sudo apt update > /dev/null;
+sudo apt-get update > /dev/null;
 
 # Install python3 if not already installed
 if [ -z $(which python3) ]
