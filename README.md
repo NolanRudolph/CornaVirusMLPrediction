@@ -8,7 +8,7 @@
 3. Python3 Numpy
 4. Python3 Pandas
 5. Python3 Matplotlib
-6. Python3 SciKit-Learn 
+6. Python3 SciKit-Learn   
 (Note: These requirements are fulfilled by following **Setup**)  
    
 **Setup**
