@@ -1,5 +1,4 @@
-### custom {.centered}
-A Macro-Metric Machine Learning Prediction for CoronaVirus Propagation
+# A Macro-Metric Machine Learning Prediction for CoronaVirus Propagation
 
 ## Requirements
 1. Python3
