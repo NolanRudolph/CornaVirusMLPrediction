@@ -3,10 +3,12 @@
 </p>
 
 **Requirements** 
-1. Python3 Numpy
-2. Python3 Pandas
-3. Python3 Matplotlib
-4. Python3 SciKit-Learn
+1. Python3
+2. Pip3
+3. Python3 Numpy
+4. Python3 Pandas
+5. Python3 Matplotlib
+6. Python3 SciKit-Learn
   
 (Note: These requirements are fulfilled by following **Setup**)  
   
