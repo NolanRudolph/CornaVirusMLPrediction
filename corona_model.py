@@ -72,6 +72,7 @@ df.insert(2, "Days_Elapsed", num_days)
 df_model = df.copy()
 df_model.drop(["SNo", "ObservationDate", "Encoded_Region", "Region", \
                "Country/Region", "Last Update"], inplace=True, axis=1)
+    
 
 """--- Test/Train Split ---"""
 from sklearn.model_selection import train_test_split
@@ -79,7 +80,7 @@ from sklearn.model_selection import train_test_split
 X_train_val, X_test, y_train_val, y_test = train_test_split(df_model, df_model["Deaths"], test_size = 0.2, random_state = 0)
 
 # Splits taining and validation data
-X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size = .125, random_state = 0)
+X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size = 0.125, random_state = 0)
 # X_test - 70% of data, X_val - 10% of data, X_test - 20% of data
 
 
@@ -87,7 +88,7 @@ X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test
 from sklearn import metrics
 from sklearn.ensemble import GradientBoostingRegressor
 # Parameters to tune
-params = {'n_estimators': 3500, 'max_depth': 3, 'min_samples_split': 2,
+params = {'n_estimators': 3000, 'max_depth': 3, 'min_samples_split': 2,
           'learning_rate': 0.05, 'loss': 'ls'}
 
 classifier = GradientBoostingRegressor(**params)
@@ -98,7 +99,6 @@ y_pred_val = classifier.predict(X_val)
 
 mse = metrics.mean_squared_error(y_val, y_pred_val)
 print("Mean square error: %.4f" % mse)
-
 
 
 """--- Hypertuning ---"""
@@ -128,6 +128,7 @@ gb = GradientBoostingRegressor()
 classifier = GridSearchCV(estimator=gb, param_grid=params, cv=5)
 
 classifier.fit(X_train, y_train)
+
 
 """
 for n_estimators in estimators:
