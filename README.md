@@ -1,4 +1,4 @@
-<p align="center">
+<p align="center" style="font-size:20px">
   <b>A Macro-Metric Machine Learning Prediction for CoronaVirus Propagation</b>
 </p>
 
