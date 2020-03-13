@@ -7,11 +7,11 @@ and python3-lib-sklearn will be installed if these files do not exist. This is p
 will not be harmful to your computer apart from storage issues.\n";
 echo -n "Do you wish to proceed? [y / n] ";
 read userInput;
-if [[ $userInput =~ [Nn] ]]
+if [[ $userInput = 'n' ]] || [[ $userInput = 'N' ]]
 then
 	echo "Exiting...";
 	exit 1;
-elif ! [[ $userInput =~ [Yy] ]]
+elif ! [[ $userInput = 'y' ]] && ! [[ $userInput = 'Y' ]]
 then
 	echo "Please respond with y or n. Exiting...";
 	exit 1;
@@ -36,14 +36,14 @@ then
 fi
 
 # Install pandas if not already installed
-if [ -z $(pip3 list | grep "pandas") ]
+if [[ -z `pip3 list --format=columns | grep "pandas"` ]]
 then
 	echo "Installing Panda...";
 	pip3 install pandas > /dev/null;
 fi
 
 # Install matplotlib if not already installed
-if [ -z $(pip3 list | grep "matplotlib") ]
+if [[ -z `pip3 list --format=columns | grep "matplotlib"` ]]
 then
 	echo "Installing Matplotlib...";
 	pip3 install matplotlib > /dev/null;
