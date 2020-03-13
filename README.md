@@ -2,7 +2,7 @@
   <b>A Macro-Metric Machine Learning Prediction for CoronaVirus Propagation</b>
 </p>
 
-# Requirements
+## Requirements
 1. Python3
 2. Pip3
 3. Python3 Numpy
@@ -16,6 +16,7 @@
 1. $ git clone https://github.com/NolanRudolph/CornaVirusMLPrediction.git
 2. $ cd CoronaVirusMLPrediction
 3. $ bash setup.sh
+  
 
 **corona\_virus.py**  
 Our main script with finely tuned hyperparameters that optimize the accuracy of all future CoronaVirus regional predictions.
