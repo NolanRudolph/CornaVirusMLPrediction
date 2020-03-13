@@ -3,10 +3,10 @@
 
 # Confirms if user wants to install new software
 echo "This program installs prerequsites for this repository: Python3, pip3, \
-	python3-lib-pandas, python3-lib-matplotlib, and python3-lib-sklearn \
-	will be installed if these files do not exist. This is preceeded by a \
-	system update. All of this will not be harmful to your computer apart \
-	from storage issues.";
+python3-lib-pandas, python3-lib-matplotlib, and python3-lib-sklearn \
+will be installed if these files do not exist. This is preceeded by a \
+system update. All of this will not be harmful to your computer apart \
+from storage issues.";
 echo -n "Do you wish to proceed? [y / n] ";
 read userInput;
 if [[ $userInput =~ [Nn] ]]
