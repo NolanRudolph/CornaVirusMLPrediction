@@ -1,5 +1,5 @@
 <p align="center" style="font-size:40px">
-  <b>A Macro-Metric Machine Learning Prediction for CoronaVirus Propagation</b>
+  ###A Macro-Metric Machine Learning Prediction for CoronaVirus Propagation
 </p>
 
 ## Requirements
