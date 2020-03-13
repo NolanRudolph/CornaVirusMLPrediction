@@ -32,7 +32,7 @@ fi
 if [ -z $(which pip3) ]
 then
 	echo "Installing pip3...";
-	sudo apt-get install -y pip3 > /dev/null;
+	sudo apt-get install -y python3-pip3 > /dev/null;
 fi
 
 # Install pandas if not already installed
@@ -46,7 +46,7 @@ fi
 if [ -z $(pip list | grep matplotlib) ]
 then
 	echo "Installing Matplotlib...";
-	pip3 install matplotlib > /dev/null;
+	sudo pip3 install matplotlib > /dev/null;
 fi
 
 echo "Finished Setup!"
