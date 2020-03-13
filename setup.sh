@@ -32,7 +32,7 @@ fi
 if [ -z $(which pip3) ]
 then
 	echo "Installing pip3...";
-	sudo apt-get install -y python3-pip3 > /dev/null;
+	sudo apt-get install -y python3-pip > /dev/null;
 fi
 
 # Install pandas if not already installed
