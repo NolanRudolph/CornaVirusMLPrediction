@@ -27,7 +27,7 @@ def main():
     # Requirements: pandas
 
     # Importing the dataset
-    dataset = pd.read_csv('novel-corona-virus-2019-dataset/covid_19_data.csv')
+    dataset = pd.read_csv('Datasets/covid_19_data.csv')
 
     # Dataframe of relevant features -- Matrix that is really easy to work with
     dataFrame = pd.DataFrame()
