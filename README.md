@@ -9,8 +9,9 @@
 4. Python3 Pandas
 5. Python3 Matplotlib
 6. Python3 SciKit-Learn   
+
 (Note: These requirements are fulfilled by following **Setup**)  
-   
+ 
 **Setup**
 1. $ git clone https://github.com/NolanRudolph/CornaVirusMLPrediction.git
 2. $ cd CoronaVirusMLPrediction
