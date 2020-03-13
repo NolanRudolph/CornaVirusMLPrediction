@@ -10,11 +10,11 @@ read userInput;
 if [[ $userInput =~ [Nn] ]]
 then
 	echo "Exiting...";
-	exit(1);
+	exit 1;
 elif ![[ $userInput =~ [Yy] ]]
 then
 	echo "Please respond with y or n. Exiting...";
-	exit(1);
+	exit 1;
 fi
 
 # Update system to not ruin user's computer
