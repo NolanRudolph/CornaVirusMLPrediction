@@ -126,7 +126,6 @@ def main():
     mse = metrics.mean_squared_error(y_val, y_pred_val)
     print("Mean square error: %.4f" % mse)
     
-    plt.figure(figsize=(12,6))
     plt.title("Graident Boosting Model")
     plt.scatter(y_train, y_train)
     plt.plot(y_train, model.predict(X_train), color = 'black')
@@ -134,7 +133,6 @@ def main():
     plt.savefig(path)
     plt.close()
     
-    plt.figure(figsize=(12,6))
     plt.title("Graident Boosting Model")
     plt.scatter(y_train, y_train)
     plt.plot(y_train, model.predict(X_train), color = 'black')
@@ -164,7 +162,7 @@ def main():
     feature_importance = model.feature_importances_
     # make importances relative to max importance
     feature_importance = 100.0 * (feature_importance / feature_importance.max())
-    sorted_idx = np.argsort(feature_importance[0:5])
+    sorted_idx = np.argsort(feature_importance[0:3])
     pos = np.arange(sorted_idx.shape[0]) + .5
     plt.subplot(1, 2, 2)
     plt.barh(pos, feature_importance[sorted_idx], align='center')
