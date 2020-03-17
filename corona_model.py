@@ -130,10 +130,8 @@ def main():
     plt.title("Graident Boosting Model")
     plt.scatter(y_train, y_train)
     plt.plot(y_train, model.predict(X_train), color = 'black')
-    plt.show()
-    
     path = "Figures/regression.png"
-    plt.savefig(path, bbox_inches='tight')
+    plt.savefig(path)
     plt.close()
     
     plt.figure(figsize=(12,6))
@@ -142,9 +140,8 @@ def main():
     plt.plot(y_train, model.predict(X_train), color = 'black')
     plt.ylim(0, 10000)
     plt.xlim(0, 10000)
-    plt.show()
     path = "Figures/regression_scaled.png"
-    plt.savefig(path, bbox_inches='tight')
+    plt.savefig(path)
     plt.close()
     
     
@@ -174,9 +171,8 @@ def main():
     plt.yticks(pos, X_train.columns[sorted_idx])
     plt.xlabel('Relative Importance')
     plt.title('Feature Importance')
-    plt.show()
     path = "Figures/feature_importance.png"
-    plt.savefig(path, bbox_inches='tight')
+    plt.savefig(path)
     plt.close()
     
     
