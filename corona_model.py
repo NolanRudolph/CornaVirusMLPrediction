@@ -98,7 +98,6 @@ def main():
     # X_test - 70% of data, X_val - 10% of data, X_test - 20% of data
     # Splits data into train/validation data and labels, and test data
     X_train_val, X_test, y_train_val, y_test = train_test_split(dataFrame_model, confirmed, test_size = 0.2, random_state = 0)
-    
     # Splits taining and validation data
     X_train, X_val, y_train, y_val = train_test_split(X_train_val, y_train_val, test_size = 0.125, random_state = 0)
     
@@ -122,13 +121,12 @@ def main():
     
     # Predicting the validation set results
     y_pred_val = model.predict(X_val)
-    
-    mse = metrics.mean_squared_error(y_val, y_pred_val)
-    print("Mean square error: %.4f" % mse)
-    
+        
     plt.title("Graident Boosting Model")
     plt.scatter(y_train, y_train)
     plt.plot(y_train, model.predict(X_train), color = 'black')
+    plt.legend(["Predicted Values", "Actual Values"])
+    plt.xlabel('Confirmed Cases')
     path = "Figures/regression.png"
     plt.savefig(path)
     plt.close()
@@ -136,6 +134,8 @@ def main():
     plt.title("Graident Boosting Model")
     plt.scatter(y_train, y_train)
     plt.plot(y_train, model.predict(X_train), color = 'black')
+    plt.legend(["Predicted Values", "Actual Values"])
+    plt.xlabel('Confirmed Cases')
     plt.ylim(0, 10000)
     plt.xlim(0, 10000)
     path = "Figures/regression_scaled.png"
@@ -175,16 +175,11 @@ def main():
     
     
     """--- BASELINE ---"""
-    # Requirements: from sklearn.linear_model import LinearRegression
     mean = pd.Series()
     median = pd.Series()
     for val in y_val:
         mean = mean.append(pd.Series(y_val.mean()), ignore_index=True)
         median = median.append(pd.Series(y_val.median()), ignore_index=True)
-    
-    #lin_reg = LinearRegression()
-    #lin_reg.fit(X_train, y_train)
-    #lin_pred = lin_reg.predict(y_val)
     
     # Mean
     mse_mean = metrics.mean_squared_error(y_val, mean)
@@ -192,12 +187,22 @@ def main():
     mse_median = metrics.mean_squared_error(y_val, median)
     # Medain
     print("Mean square error (Median prediction): %.4f" % mse_median)
-    # Linear Regression
-    #mse_lin_reg =  metrics.mean_squared_error(y_val, median)
-    #print("Mean square error (Linear regression prediction): %.4f" % mse_median)
+
     
-    #barlist = plt.bar([mse, mse_mean, mse_median, mse_lin_reg], ["Gradient Boosted Regression", "Mean", "Median", "Linear Regression"])
-    #plt.show()
+    barlist = plt.bar(["Gradient Boosted Regression", "Mean", "Median"], [mse, mse_mean, mse_median])
+    barlist[0].set_color("r")
+    barlist[0].set_color("b")
+    barlist[0].set_color("y")
+    plt.ylabel("Mean Square Error")
+    path = "Figures/baselines.png"
+    plt.savefig(path)
+    plt.close()
+    
+    """---- FINAL TESTING ---"""
+    y_pred = model.predict(X_test)
+    
+    mse = metrics.mean_squared_error(y_test, y_pred)
+    print("*** Test mean square error: %.4f ***" % mse)
 
 # Encase we need several modules in the future
 if __name__ == "__main__":
